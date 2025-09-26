@@ -14,7 +14,7 @@ source:
 
 build:
   number: 0
-  # Old package which is not compatible with Python 3.12+
+  # This package is not compatible with Python 3.12+
   # _fsevents.c:97:11: error: call to undeclared function 'PyEval_ThreadsInitialized'
   # From Py3.13 doc: Remove the PyEval_ThreadsInitialized() function, deprecated in Python 3.9.
   # https://docs.python.org/3/whatsnew/3.13.html

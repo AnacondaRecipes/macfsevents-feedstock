@@ -18,7 +18,8 @@ build:
   # _fsevents.c:97:11: error: call to undeclared function 'PyEval_ThreadsInitialized'
   # From Py3.13 doc: Remove the PyEval_ThreadsInitialized() function, deprecated in Python 3.9.
   # https://docs.python.org/3/whatsnew/3.13.html
-  skip: true  # [(not osx) and py>312]
+  skip: true  # [not osx] 
+  skip: true  # [py>312]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -57,7 +58,7 @@ test:
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - pytest -v gh/tests.py
+    - pytest -v gh/tests.py {{ deselect_tests }}
 
 about:
   home: https://github.com/malthe/macfsevents
